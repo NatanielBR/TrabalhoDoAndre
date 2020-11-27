@@ -58,6 +58,11 @@ class Conexao
      * um true em um if.
      */
     public function isSelectCommand($sql){
-        return strpos(strtolower($sql), "select");
+        $resultado = strpos(strtolower($sql), "select");
+        if (is_numeric($resultado)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
