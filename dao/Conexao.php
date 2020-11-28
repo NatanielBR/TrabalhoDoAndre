@@ -52,6 +52,14 @@ class Conexao
     }
 
     /**
+     * Metodo para obter uma lista de erros
+     * @return array Uma lista de erros.
+     */
+    public function getError(){
+        return $this->conexao->errorInfo();
+    }
+
+    /**
      * Metodo para descobrir se é um comando SQL Select
      * @param $sql String O comando SQL
      * @return false|int False caso não seja ou algum numero caso seja, esse numero será considerado
