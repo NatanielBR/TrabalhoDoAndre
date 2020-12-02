@@ -40,8 +40,11 @@ class PostReporsitory implements IReporsitory
     public function saveOrUpdate($entity)
     {
         if ($entity instanceof Post) {
-            return $this->conexao->executarSQL("INSERT INTO posts VALUES (" . $entity->getId() . ",'" . $entity->getTexto() . "') ON DUPLICATE KEY UPDATE
-   texto = '" . $entity->getTexto() . "';");
+            if ($entity->atualizado instanceof DateTime) {
+                $entity->atualizado = $entity->atualizado->format("yy-m-d");
+            }
+            return $this->conexao->executarSQL("INSERT INTO posts VALUES (" . $entity->id . ",'" . $entity->texto . "', '" . $entity->atualizado . "') ON DUPLICATE KEY UPDATE
+   texto = '" . $entity->texto . "', atualizado = '" . $entity->atualizado . "'");
         } else {
             return false;
         }
@@ -49,7 +52,7 @@ class PostReporsitory implements IReporsitory
 
     public function exists($id)
     {
-        $resultado = $this->conexao->executarSQL("select * from posts where id=".$id);
+        $resultado = $this->conexao->executarSQL("select * from posts where id=" . $id);
         return $resultado->rowCount() > 0;
     }
 }

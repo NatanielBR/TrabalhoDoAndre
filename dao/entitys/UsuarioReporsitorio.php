@@ -41,7 +41,7 @@ class UsuarioReporsitorio implements IReporsitory
      */
     public function delete($id)
     {
-        return $this->conexao->executarSQL("delete from usuario where id=".$id);
+        return $this->conexao->executarSQL("delete from usuario where id=" . $id);
     }
 
     /**
@@ -50,16 +50,21 @@ class UsuarioReporsitorio implements IReporsitory
     public function saveOrUpdate($entity)
     {
         if ($entity instanceof Usuario) {
-            $resultado =  $this->conexao->executarSQL("INSERT INTO usuario VALUES  (" . $entity->getId() . ",".
-                "'". $entity->getNome()."',".
-                "'". $entity->getEmail(). "',".
-                "'". $entity->getSenha(). "',".
-                "'".$entity->getData()."'".
-                ") ON DUPLICATE KEY UPDATE ".
-                "nome='". $entity->getNome()."',".
-                "email='". $entity->getEmail(). "',".
-                "senha='". $entity->getSenha(). "',".
-                "data='".$entity->getData()."'".
+            //yy-m-d
+            if($entity->data instanceof DateTime){
+                $entity->data = $entity->data->format("yy-m-d");
+            }
+
+            $resultado = $this->conexao->executarSQL("INSERT INTO usuario VALUES  (" . $entity->id . "," .
+                "'" . $entity->nome . "'," .
+                "'" . $entity->email . "'," .
+                "'" . $entity->senha . "'," .
+                "'" . $entity->data . "'" .
+                ") ON DUPLICATE KEY UPDATE " .
+                "nome='" . $entity->nome . "'," .
+                "email='" . $entity->email . "'," .
+                "senha='" . $entity->senha . "'," .
+                "data='" . $entity->data . "'" .
                 ";");
             return $resultado;
         } else {
@@ -72,7 +77,7 @@ class UsuarioReporsitorio implements IReporsitory
      */
     public function exists($id)
     {
-        $resultado = $this->conexao->executarSQL("select * from usuario where id=".$id);
-        return $resultado->rowCount()>0;
+        $resultado = $this->conexao->executarSQL("select * from usuario where id=" . $id);
+        return $resultado->rowCount() > 0;
     }
 }

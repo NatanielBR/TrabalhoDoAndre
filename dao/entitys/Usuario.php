@@ -3,94 +3,11 @@ include_once "dao/IEntity.php";
 
 class Usuario implements IEntity
 {
-    private $id;
-    private $nome;
-    private $email;
-    private $senha;
-    private $data;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNome()
-    {
-        return $this->nome;
-    }
-
-    /**
-     * @param string $nome
-     */
-    public function setNome($nome)
-    {
-        $this->nome = $nome;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSenha()
-    {
-        return $this->senha;
-    }
-
-    /**
-     * @param string $senha
-     */
-    public function setSenha($senha)
-    {
-        $this->senha = $senha;
-    }
-
-    /**
-     * Retorna uma datatime no formato yyyy-mm-dd.
-     * @return string
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * Setta uma datatime no formato yyyy-mm-dd.
-     * @param DateTime $data
-     */
-    public function setData($data)
-    {
-
-        $this->data = $data->format("yy-m-d");
-    }
+    public $id;
+    public $nome;
+    public $email;
+    public $senha;
+    public $data;
 
 
     public static function getTableSQL()
