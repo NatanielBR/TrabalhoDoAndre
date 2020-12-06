@@ -1,9 +1,25 @@
 <?php
-include "api/PostAPI.php";
+include "api/CidadeAPI.php";
+
+/**
+ * O funcionamento do arquivo é simples.
+ * Basta executar o arquivo e informar por padrão o "type" como get.
+ * A requisição ficara assim:
+ * /api.php?type=cidade
+ *
+ * Apos escolher, deve escolher a ação informanto "action" como get.
+ * Ficará assim:
+ * /api.php?type=cidade&action=listar
+ *
+ * Caso o action precise de parametros extras, como remover, continue
+ * informando adiante.
+ */
+
+
 if (count($_POST) == 0){
     $_POST = json_decode(file_get_contents("php://input"), true);
 }
-$apis = [new postAPI()];
+$apis = [new CidadeAPI()];
 $api_map = [];
 foreach ($apis as $api) {
     $api_map[$api->getAPIName()] = $api;

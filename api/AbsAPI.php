@@ -96,20 +96,29 @@ abstract class AbsAPI
     public abstract function atualizar();
 
     /**
-     * @param $post
-     * @return Post|null
+     * Metodo para fazer um parser de um array para um objeto
+     * @template T
+     * @param $arr array um Array com seus dados, ex: $_GET
+     * @param {T} $obj um objeto já instanciado.
+     * @return {T} O mesmo objeto instanciado porem com os atributos preenchidos.
      */
-    protected function tryParsePostToObj($post, $obj)
+    protected function tryParseArrayToObj($arr, $obj)
     {
 //        var_dump(get_class_vars(get_class($obj)));
         foreach (get_class_vars(get_class($obj)) as $var => $value) {
-            if (key_exists($var, $post)) {
-                $obj->{$var} = $post[$var];
+            if (key_exists($var, $arr)) {
+                $obj->{$var} = $arr[$var];
             }
         }
         return $obj;
     }
 
+    /**
+     * Metodo para exibir uma mensagem em JSON.
+     * @param $code int status http (tente ser o mais fiel possivel)
+     * @param $status string mensagem basica de erro.
+     * @param array $extra parametros extras para ser exibido.
+     */
     protected function reportar($code, $status, $extra = [])
     {
         $dados['code'] = $code;
@@ -123,6 +132,18 @@ abstract class AbsAPI
         }
         http_response_code($dados['code']);
         echo(json_encode($dados));
+    }
+
+    /**
+     * Metodo para checar se o parametro GET foi atendido. Caso sim, o script
+     * executa normalmente, caso não ele reporta e sai.
+     * @param $parametro String parametro para ser checado.
+     */
+    protected function condicaoGet($parametro){
+        if (!isset($_GET[$parametro])){
+            $this->reportar(500, "Parametro obrigatorio : ".$parametro);
+            exit(-1);
+        }
     }
 
 }
