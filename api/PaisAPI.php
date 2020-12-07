@@ -3,7 +3,7 @@ include_once "AbsAPI.php";
 include_once "dao/entitys/Pais.php";
 include_once "dao/entitys/PaisReporsitory.php";
 
-class Pais API extends AbsAPI
+class PaisAPI extends AbsAPI
 {
 
     private $reporsitorio;
