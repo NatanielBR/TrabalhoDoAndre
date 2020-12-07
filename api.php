@@ -1,4 +1,7 @@
 <?php
+
+include "api/PaisAPI.php";
+include "api/EstadoAPI.php";
 include "api/CidadeAPI.php";
 
 /**
@@ -19,7 +22,7 @@ include "api/CidadeAPI.php";
 if (count($_POST) == 0){
     $_POST = json_decode(file_get_contents("php://input"), true);
 }
-$apis = [new CidadeAPI()];
+$apis = [new PaisAPI(), new EstadoAPI(), new CidadeAPI()];
 $api_map = [];
 foreach ($apis as $api) {
     $api_map[$api->getAPIName()] = $api;
