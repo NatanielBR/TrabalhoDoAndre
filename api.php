@@ -1,7 +1,5 @@
 <?php
 include "api/CidadeAPI.php";
-include "api/EstadoAPI.php";
-include "api/PaisAPI.php";
 
 /**
  * O funcionamento do arquivo é simples.
