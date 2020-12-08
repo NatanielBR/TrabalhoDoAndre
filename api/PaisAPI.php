@@ -1,7 +1,7 @@
 <?php
 include_once "AbsAPI.php";
 include_once "dao/entitys/Pais.php";
-include_once "dao/entitys/PaisReporsitory.php";
+include_once "dao/entitys/PaisReporsitorio.php";
 
 class PaisAPI extends AbsAPI
 {

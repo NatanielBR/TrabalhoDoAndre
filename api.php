@@ -21,7 +21,7 @@ include "api/PaisAPI.php";
 if (count($_POST) == 0){
     $_POST = json_decode(file_get_contents("php://input"), true);
 }
-$apis = [new CidadeAPI()];
+$apis = [new CidadeAPI(), new EstadoAPI(), new PaisAPI()];
 $api_map = [];
 foreach ($apis as $api) {
     $api_map[$api->getAPIName()] = $api;
