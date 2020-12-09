@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Mundanos - Painel de criação de paises</title>
+        <title>Mundanos - Painel de criação de estados</title>
     </head>
     <body>
-        <h1>Painel de criação de paises</h1>
+        <h1>Painel de criação de estados</h1>
         <hr>
         <form action="index.php" method="get">
             <label for="inputPaises">Selecione o pais: </label>
