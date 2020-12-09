@@ -49,4 +49,9 @@ class CidadeReporsitorio implements IReporsitory
     {
         return $this->conexao->executarSQL("select * from cidades where id =".$id)->rowCount() > 0;
     }
+
+    public function existsName($name)
+    {
+        return $this->conexao->executarSQL("select * from cidades where nome = '" . $name . "'")->rowCount() > 0;
+    }
 }

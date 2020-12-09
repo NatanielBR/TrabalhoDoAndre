@@ -22,6 +22,11 @@ class EstadoReporsitorio implements IReporsitory
         return $this->conexao->executarSQL("select * from estados");
     }
 
+    public function findAllByPais($pais)
+    {
+        return $this->conexao->executarSQL("select * from estados where pais_id=".$pais);
+    }
+
     /**
      * @inheritDoc
      * @return Estado
@@ -38,7 +43,6 @@ class EstadoReporsitorio implements IReporsitory
     public function findByName($name)
     {
         $result = $this->conexao->executarSQL("select * from estados where nome='" . $name . "'");
-        var_dump($result);
         return $result->fetchObject("estado");
     }
 
