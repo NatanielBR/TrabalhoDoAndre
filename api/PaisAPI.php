@@ -9,7 +9,7 @@ class PaisAPI extends AbsAPI
     private $reporsitorio;
 
     /**
-     * EstadoAPI constructor.
+     * PaisAPI constructor.
      */
     public function __construct()
     {
@@ -20,12 +20,12 @@ class PaisAPI extends AbsAPI
 
     public function getAPIName()
     {
-        return "País";
+        return "pais";
     }
 
     public function listar()
     {
-        echo json_encode($this->reporsitorio->findAll()->fetchAll(PDO::FETCH_CLASS, "País"));
+        echo json_encode($this->reporsitorio->findAll()->fetchAll(PDO::FETCH_CLASS, "pais"));
     }
 
     public function remover()
@@ -34,9 +34,9 @@ class PaisAPI extends AbsAPI
         $id = $_GET['id'];
         if ($this->reporsitorio->exists($id)){
             $this->reporsitorio->delete($id);
-            $this->reportar(200, "País removido com sucesso!");
+            $this->reportar(200, "Pais removido com sucesso!");
         }else{
-            $this->reportar(404, "País não existe!");
+            $this->reportar(404, "Pais não existe!");
         }
     }
 
@@ -45,13 +45,13 @@ class PaisAPI extends AbsAPI
         $pais = $this->createFromGet();
 
         if ($this->reporsitorio->exists($pais->id)){
-            $this->reportar(409, "País já existe no banco de dados!");
+            $this->reportar(409, "Pais já existe no banco de dados!");
         }else{
-            if ($this->reporsitorio2->exists($pais->pais_id)){
+            if ($this->reporsitorio->exists($pais->id)){
                 $this->reporsitorio->saveOrUpdate($pais);
-                $this->reportar(200, "País salvo com sucesso!");
+                $this->reportar(200, "Pais salvo com sucesso!");
             }else{
-                $this->reportar(404, "País não existe!");
+                $this->reportar(404, "Pais não existe!");
             }
         }
 
@@ -63,16 +63,16 @@ class PaisAPI extends AbsAPI
 
         if ($this->reporsitorio->exists($pais->id)){
             $this->reporsitorio->saveOrUpdate($pais);
-            $this->reportar(200, "País atualizado com sucesso!");
+            $this->reportar(200, "Pais atualizado com sucesso!");
         }else{
-            $this->reportar(404, "País não existe no banco de dados!");
+            $this->reportar(404, "Pais não existe no banco de dados!");
         }
 
     }
 
     /**
-     * Metodo que valida e cria um Estado com base no $_GET
-     * @return Estado
+     * Metodo que valida e cria um Pais com base no $_GET
+     * @return Pais
      */
     private function createFromGet(){
         $this->condicaoGet('id');
