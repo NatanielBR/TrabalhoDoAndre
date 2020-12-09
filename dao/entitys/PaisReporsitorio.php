@@ -27,7 +27,7 @@ class PaisReporsitorio implements IReporsitory
      */
     public function findById($id)
     {
-        $result = $this->conexao->executarSQL("select * from paises where id=" . $id);
+        $result = $this->conexao->executarSQL("select * from paises where pais_id=" . $id);
         return $result->fetchObject("pais");
     }
 
@@ -43,7 +43,7 @@ class PaisReporsitorio implements IReporsitory
 
     public function delete($id)
     {
-        return $this->conexao->executarSQL("delete from paises where id=" . $id);
+        return $this->conexao->executarSQL("delete from paises where pais_id=" . $id);
     }
 
     public function saveOrUpdate($entity)
@@ -57,7 +57,7 @@ class PaisReporsitorio implements IReporsitory
 
     public function exists($id)
     {
-        return $this->conexao->executarSQL("select * from paises where id = ".$id)->rowCount()>0;
+        return $this->conexao->executarSQL("select * from paises where pais_id = ".$id)->rowCount()>0;
     }
 
     public function existsName($name)

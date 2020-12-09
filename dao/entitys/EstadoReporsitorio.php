@@ -33,7 +33,7 @@ class EstadoReporsitorio implements IReporsitory
      */
     public function findById($id)
     {
-        return $this->conexao->executarSQL("select * from estados where id = " . $id)->fetchObject('estado');
+        return $this->conexao->executarSQL("select * from estados where estado_id = " . $id)->fetchObject('estado');
     }
 
     /**
@@ -48,7 +48,7 @@ class EstadoReporsitorio implements IReporsitory
 
     public function delete($id)
     {
-        return $this->conexao->executarSQL("delete from estados where id = " . $id);
+        return $this->conexao->executarSQL("delete from estados where estado_id = " . $id);
     }
 
     public function saveOrUpdate($entity)
@@ -62,7 +62,7 @@ class EstadoReporsitorio implements IReporsitory
 
     public function exists($id)
     {
-        return $this->conexao->executarSQL("select * from estados where id =" . $id)->rowCount() > 0;
+        return $this->conexao->executarSQL("select * from estados where estado_id =" . $id)->rowCount() > 0;
     }
 
     public function existsName($name)

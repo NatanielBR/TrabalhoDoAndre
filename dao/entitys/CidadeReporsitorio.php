@@ -19,14 +19,18 @@ class CidadeReporsitorio implements IReporsitory
         return $this->conexao->executarSQL("select * from cidades");
     }
 
+    public function findAllWithJoin(){
+        return $this->conexao->executarSQL("SELECT * from cidades LEFT JOIN estados USING (estado_id) LEFT JOIN paises USING (pais_id)");
+    }
+
     public function findById($id)
     {
-        return $this->conexao->executarSQL("select * from cidades where id=".$id)->fetchObject("cidade");
+        return $this->conexao->executarSQL("select * from cidades where cidade_id=".$id)->fetchObject("cidade");
     }
 
     public function delete($id)
     {
-        return $this->conexao->executarSQL("delete from cidades where id=".$id);
+        return $this->conexao->executarSQL("delete from cidades where cidade_id=".$id);
     }
 
     public function saveOrUpdate($entity)
@@ -47,7 +51,7 @@ class CidadeReporsitorio implements IReporsitory
 
     public function exists($id)
     {
-        return $this->conexao->executarSQL("select * from cidades where id =".$id)->rowCount() > 0;
+        return $this->conexao->executarSQL("select * from cidades where cidade_id =".$id)->rowCount() > 0;
     }
 
     public function existsName($name)

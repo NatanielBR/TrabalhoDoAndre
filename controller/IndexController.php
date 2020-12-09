@@ -1,11 +1,13 @@
 <?php
 include "./dao/entitys/PaisReporsitorio.php";
 include "./dao/entitys/EstadoReporsitorio.php";
+include "./dao/entitys/CidadeReporsitorio.php";
 
 class IndexController
 {
     private $reporsitorioPais;
     private $reporsitorioEstado;
+    private $reporsitorioCidade;
 
     /**
      * IndexController constructor.
@@ -14,11 +16,22 @@ class IndexController
     {
         $this->reporsitorioPais = new PaisReporsitorio();
         $this->reporsitorioEstado = new EstadoReporsitorio();
+        $this->reporsitorioCidade = new CidadeReporsitorio();
     }
 
     public function normal()
     {
-        include "./viewer/Index.html";
+        $dados = [];
+        $resultado = $this->reporsitorioCidade->findAllWithJoin()->fetchAll();
+        foreach ($resultado as $linha){
+            $item = [];
+            $item['Cidade'] = $linha[3];
+            $item['Estado'] = $linha[5];
+            $item['Pais'] = $linha[6];
+            $item['Descricao'] = $linha[4];
+            $dados[] = $item;
+        }
+        include "./viewer/Index.php";
     }
 
     public function novo()

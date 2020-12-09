@@ -12,13 +12,13 @@ class Cidade implements IEntity
     {
         return "
         CREATE TABLE IF NOT EXISTS `cidades` (
-            `id` INT(10) NOT NULL AUTO_INCREMENT,
+            `cidade_id` INT(10) NOT NULL AUTO_INCREMENT,
             `nome` VARCHAR(255) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
             `descricao` VARCHAR(255) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
             `estado_id` INT(10) NOT NULL,
-            PRIMARY KEY (`id`) USING BTREE,
+            PRIMARY KEY (`cidade_id`) USING BTREE,
             INDEX `FK__estados` (`estado_id`),
-            CONSTRAINT `FK__estados` FOREIGN KEY (`estado_id`) REFERENCES `projeto_andre`.`estados` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
+            CONSTRAINT `FK__estados` FOREIGN KEY (`estado_id`) REFERENCES `projeto_andre`.`estados` (`estado_id`) ON UPDATE NO ACTION ON DELETE NO ACTION
         )
         COLLATE='utf8mb4_general_ci'
         ENGINE=InnoDB

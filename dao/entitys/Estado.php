@@ -12,11 +12,11 @@ class Estado implements IEntity
     public static function getTableSQL()
     {
         return "CREATE TABLE IF NOT EXISTS `estados` ( 
-            `id` INT NOT NULL AUTO_INCREMENT,
+            `estado_id` INT NOT NULL AUTO_INCREMENT,
             `nome` varchar(255) NOT NULL,
             `pais_id` INT NOT NULL,
-            PRIMARY KEY (`id`),
-            CONSTRAINT `FK__paises` FOREIGN KEY (`pais_id`) REFERENCES `paises` (`id`)
+            PRIMARY KEY (`estado_id`),
+            CONSTRAINT `FK__paises` FOREIGN KEY (`pais_id`) REFERENCES `paises` (`pais_id`)
         ) COLLATE='utf8mb4_general_ci';";
     }
 }
