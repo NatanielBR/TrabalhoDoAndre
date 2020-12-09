@@ -24,24 +24,24 @@
             <main>
                 <div class="header-1">
                     <div class="logo">
-                        <img src="./img/logo.png">
+                        <img src="./img/logo.jpg">
 
-                        <p><img src="logo.png" width="35" height="60" align="left"></p>
+<!--                        <p><img src="./img/logo.png" width="35" height="60" align="left"></p>-->
 
 
                     </div>
                     <div class="social-media">
                         <ul>
-                            <li><a href=""><img src="./img/instagram.png "> </a></li>
+                            <li><a href=""><img src="./img/instagram.png " style="width: 25px; height: 25px;"> </a></li>
 
 
-                            <li><a href=""><img src="./img/twitter.png "> </a></li>
+                            <li><a href=""><img src="./img/twitter.png " style="width: 25px; height: 25px;"> </a></li>
 
 
-                            <li><a href=""><img src="./img/facebook.png "></a></li>
+                            <li><a href=""><img src="./img/facebook.png " style="width: 25px; height: 25px;"></a></li>
 
 
-                            <li><a href=""><img src="./img/whatsapp.png " ></a>
+                            <li><a href=""><img src="./img/whatsapp.png " style="width: 25px; height: 25px;"></a>
                             </li>
 
 
