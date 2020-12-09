@@ -31,6 +31,16 @@ class PaisReporsitorio implements IReporsitory
         return $result->fetchObject("pais");
     }
 
+    /**
+     * @inheritDoc
+     * @return Pais
+     */
+    public function findByName($name)
+    {
+        $result = $this->conexao->executarSQL("select * from paises where nome=" . $name);
+        return $result->fetchObject("pais");
+    }
+
     public function delete($id)
     {
         return $this->conexao->executarSQL("delete from paises where id=" . $id);
@@ -48,5 +58,9 @@ class PaisReporsitorio implements IReporsitory
     public function exists($id)
     {
         return $this->conexao->executarSQL("select * from paises where id = ".$id)->rowCount()>0;
+    }
+    public function existsName($name)
+    {
+        return $this->conexao->executarSQL("select * from paises where nome = '".$name."'")->rowCount()>0;
     }
 }
