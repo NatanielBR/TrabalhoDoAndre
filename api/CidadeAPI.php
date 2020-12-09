@@ -47,7 +47,7 @@ class CidadeAPI extends AbsAPI
     {
         $cidade = $this->createFromGet();
 
-        if ($this->reporsitorio->exists($cidade->id)){
+        if ($this->reporsitorio->exists($cidade->cidade_id)){
             $this->reportar(409, "Cidade já existe no banco de dados!");
         }else{
             if ($this->reporsitorio2->exists($cidade->estado_id)){
@@ -64,7 +64,7 @@ class CidadeAPI extends AbsAPI
     {
         $cidade = $this->createFromGet();
 
-        if ($this->reporsitorio->exists($cidade->id)){
+        if ($this->reporsitorio->exists($cidade->cidade_id)){
             $this->reporsitorio->saveOrUpdate($cidade);
             $this->reportar(200, "Cidade atualizado com sucesso!");
         }else{

@@ -49,7 +49,7 @@ class PaisReporsitorio implements IReporsitory
     public function saveOrUpdate($entity)
     {
         if ($entity instanceof Pais){
-            return $this->conexao->executarSQL("INSERT INTO paises VALUES (".$entity->id.",'".$entity->nome."') ON DUPLICATE KEY UPDATE nome = '".$entity->nome."'");
+            return $this->conexao->executarSQL("INSERT INTO paises VALUES (".$entity->pais_id.",'".$entity->nome."') ON DUPLICATE KEY UPDATE nome = '".$entity->nome."'");
         }else{
             return false;
         }

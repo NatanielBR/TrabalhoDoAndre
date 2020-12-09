@@ -3,7 +3,7 @@ include_once "dao/IEntity.php";
 
 class Cidade implements IEntity
 {
-    public $id;
+    public $cidade_id;
     public $nome;
     public $descricao;
     public $estado_id;

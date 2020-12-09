@@ -3,7 +3,7 @@ include_once "dao/IEntity.php";
 
 class Pais implements IEntity
 {
-    public $id;
+    public $pais_id;
     public $nome;
 
 

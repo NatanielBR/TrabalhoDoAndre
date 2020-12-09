@@ -54,7 +54,7 @@ class EstadoReporsitorio implements IReporsitory
     public function saveOrUpdate($entity)
     {
         if ($entity instanceof Estado) {
-            return $this->conexao->executarSQL("INSERT INTO estados VALUES (" . $entity->id . ",'" . $entity->nome . "', " . $entity->pais_id . ") ON DUPLICATE KEY UPDATE nome = '" . $entity->nome . "', pais_id =" . $entity->pais_id);
+            return $this->conexao->executarSQL("INSERT INTO estados VALUES (" . $entity->estado_id . ",'" . $entity->nome . "', " . $entity->pais_id . ") ON DUPLICATE KEY UPDATE nome = '" . $entity->nome . "', pais_id =" . $entity->pais_id);
         } else {
             return false;
         }

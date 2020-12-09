@@ -4,7 +4,7 @@ include_once "dao/IEntity.php";
 
 class Estado implements IEntity
 {
-    public $id;
+    public $estado_id;
     public $nome;
     public $pais_id;
 

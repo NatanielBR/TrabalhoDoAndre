@@ -37,7 +37,7 @@ class CidadeReporsitorio implements IReporsitory
     {
         if ($entity instanceof Cidade){
             return $this->conexao->executarSQL("
-                INSERT INTO cidades VALUES (".$entity->id.",
+                INSERT INTO cidades VALUES (".$entity->cidade_id.",
                 '".$entity->nome."',
                 '".$entity->descricao."',
                 ".$entity->estado_id.") 

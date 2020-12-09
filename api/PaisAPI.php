@@ -44,7 +44,7 @@ class PaisAPI extends AbsAPI
     {
         $pais = $this->createFromGet();
 
-        if ($this->reporsitorio->exists($pais->id)){
+        if ($this->reporsitorio->exists($pais->pais_id)){
             $this->reportar(409, "Pais já existe no banco de dados!");
         }else{
                 $this->reporsitorio->saveOrUpdate($pais);
@@ -57,7 +57,7 @@ class PaisAPI extends AbsAPI
     {
         $pais = $this->createFromGet();
 
-        if ($this->reporsitorio->exists($pais->id)){
+        if ($this->reporsitorio->exists($pais->pais_id)){
             $this->reporsitorio->saveOrUpdate($pais);
             $this->reportar(200, "Pais atualizado com sucesso!");
         }else{

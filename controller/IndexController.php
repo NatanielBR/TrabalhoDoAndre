@@ -56,12 +56,12 @@ class IndexController
                     if (isset($_GET['estado'])){
                         $pais = $this->reporsitorioPais->findByName($_GET['pais']);
                         $estado = $this->reporsitorioEstado->findByName($_GET['estado']);
-                        $idPais = $pais->id;
-                        $idEstado = $estado->id;
+                        $idPais = $pais->pais_id;
+                        $idEstado = $estado->estado_id;
                         include "./viewer/inserirCidade3.php";
                     }else if (isset($_GET['pais'])) {
                         $pais = $this->reporsitorioPais->findByName($_GET['pais']);
-                        $lista = $this->reporsitorioEstado->findAllByPais( $pais->id
+                        $lista = $this->reporsitorioEstado->findAllByPais( $pais->pais_id
                             )->fetchAll();
                         include "./viewer/inserirCidade2.php";
                     } else {
