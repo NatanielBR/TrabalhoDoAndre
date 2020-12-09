@@ -37,7 +37,7 @@ class PaisReporsitorio implements IReporsitory
      */
     public function findByName($name)
     {
-        $result = $this->conexao->executarSQL("select * from paises where nome=" . $name);
+        $result = $this->conexao->executarSQL("select * from paises where nome='" . $name. "'");
         return $result->fetchObject("pais");
     }
 
@@ -59,6 +59,7 @@ class PaisReporsitorio implements IReporsitory
     {
         return $this->conexao->executarSQL("select * from paises where id = ".$id)->rowCount()>0;
     }
+
     public function existsName($name)
     {
         return $this->conexao->executarSQL("select * from paises where nome = '".$name."'")->rowCount()>0;

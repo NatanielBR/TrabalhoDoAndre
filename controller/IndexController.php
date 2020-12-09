@@ -3,12 +3,14 @@ include "./dao/entitys/PaisReporsitorio.php";
 
 class IndexController
 {
+    private $reporsitorioPais;
 
     /**
      * IndexController constructor.
      */
     public function __construct()
     {
+        $this->reporsitorioPais = new PaisReporsitorio();
     }
 
     public function normal()
@@ -22,6 +24,16 @@ class IndexController
             switch ($_GET['oq']) {
                 case "pais":
                     include "./viewer/inserirPais.php";
+//                    $this->includeWithVariables("./viewer/inserirPais.php", ['lista'=>$lista]);
+                    break;
+                case "estado":
+                    if (isset($_GET['pais'])) {
+                        include "./viewer/inserirEstado2.php";
+                    } else {
+                        $lista = $this->reporsitorioPais->findAll()->fetchAll();
+                        include "./viewer/inserirEstado.php";
+
+                    }
 //                    $this->includeWithVariables("./viewer/inserirPais.php", ['lista'=>$lista]);
                     break;
                 default:
