@@ -80,7 +80,6 @@ class EstadoAPI extends AbsAPI
     private function createFromGet(){
         $this->condicaoGet('id');
         $this->condicaoGet('nome');
-        $this->condicaoGet('descricao');
         $this->condicaoGet('pais_id');
 
 
