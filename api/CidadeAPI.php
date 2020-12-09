@@ -78,7 +78,7 @@ class CidadeAPI extends AbsAPI
      * @return Cidade
      */
     private function createFromGet(){
-        $this->condicaoGet('id');
+        $this->condicaoGet('cidade_id');
         $this->condicaoGet('nome');
         $this->condicaoGet('descricao');
         $this->condicaoGet('estado_id');

@@ -46,7 +46,6 @@ class EstadoAPI extends AbsAPI
     public function inserir()
     {
         $estado = $this->createFromGet();
-
         if ($this->reporsitorio->exists($estado->estado_id)){
             $this->reportar(409, "Estado já existe no banco de dados!");
         }else{
@@ -78,7 +77,7 @@ class EstadoAPI extends AbsAPI
      * @return Estado
      */
     private function createFromGet(){
-        $this->condicaoGet('id');
+        $this->condicaoGet('estado_id');
         $this->condicaoGet('nome');
         $this->condicaoGet('pais_id');
 

@@ -71,7 +71,7 @@ class PaisAPI extends AbsAPI
      * @return Pais
      */
     private function createFromGet(){
-        $this->condicaoGet('id');
+        $this->condicaoGet('pais_id');
         $this->condicaoGet('nome');
 
 

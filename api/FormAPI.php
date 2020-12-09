@@ -45,7 +45,7 @@ class FormAPI extends AbsAPI
                 if ($this->reporsitorioPais->existsName($_GET['nome'])){
                     $this->reportar(409, "País já existe no banco de dados");
                 }else{
-                    header("Location:api.php?type=pais&action=inserir&nome=".$_GET['nome']."&id=".rand());
+                    header("Location:api.php?type=pais&action=inserir&nome=".$_GET['nome']."&pais_id=".rand());
                 }
                 break;
 
@@ -54,7 +54,7 @@ class FormAPI extends AbsAPI
                     $this->reportar(409, "Estado já existe no banco de dados");
                 }else{
                     $pais = $this->reporsitorioPais->findByName(($_GET['pais']));
-                    header("Location:api.php?type=estado&action=inserir&nome=".$_GET['nome']."&id=".rand()."&pais_id=".$pais->id);
+                    header("Location:api.php?type=estado&action=inserir&nome=".$_GET['nome']."&estado_id=".rand()."&pais_id=".$pais->pais_id);
                 }
                 break;
 
@@ -62,7 +62,7 @@ class FormAPI extends AbsAPI
                 if ($this->reporsitorioCidade->existsName($_GET['nome'])){
                     $this->reportar(409, "Cidade já existe no banco de dados");
                 }else{
-                    header("Location:api.php?type=cidade&action=inserir&nome=".$_GET['nome']."&id=".rand()."&pais_id=".$_GET['idPais']."&estado_id=".$_GET['idEstado']."&descricao=".$_GET['descricao']);
+                    header("Location:api.php?type=cidade&action=inserir&nome=".$_GET['nome']."&cidade_id=".rand()."&pais_id=".$_GET['idPais']."&estado_id=".$_GET['idEstado']."&descricao=".$_GET['descricao']);
                 }
                 break;
 
