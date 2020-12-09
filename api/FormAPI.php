@@ -2,11 +2,13 @@
 include_once "api/AbsAPI.php";
 include_once "dao/entitys/PaisReporsitorio.php";
 include_once "dao/entitys/EstadoReporsitorio.php";
+include_once "dao/entitys/CidadeReporsitorio.php";
 
 class FormAPI extends AbsAPI
 {
     private $reporsitorioPais;
     private $reporsitorioEstado;
+    private $reporsitorioCidade;
 
     /**
      * FormAPI constructor.
@@ -16,6 +18,7 @@ class FormAPI extends AbsAPI
 
         $this->reporsitorioPais = new PaisReporsitorio();
         $this->reporsitorioEstado = new EstadoReporsitorio();
+        $this->reporsitorioCidade = new CidadeReporsitorio();
     }
 
     public function getAPIName()
@@ -52,6 +55,14 @@ class FormAPI extends AbsAPI
                 }else{
                     $pais = $this->reporsitorioPais->findByName(($_GET['pais']));
                     header("Location:api.php?type=estado&action=inserir&nome=".$_GET['nome']."&id=".rand()."&pais_id=".$pais->id);
+                }
+                break;
+
+            case "cidade":
+                if ($this->reporsitorioCidade->existsName($_GET['nome'])){
+                    $this->reportar(409, "Cidade já existe no banco de dados");
+                }else{
+                    header("Location:api.php?type=cidade&action=inserir&nome=".$_GET['nome']."&id=".rand()."&pais_id=".$_GET['idPais']."&estado_id=".$_GET['idEstado']."&descricao=".$_GET['descricao']);
                 }
                 break;
 

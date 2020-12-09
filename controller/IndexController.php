@@ -1,9 +1,11 @@
 <?php
 include "./dao/entitys/PaisReporsitorio.php";
+include "./dao/entitys/EstadoReporsitorio.php";
 
 class IndexController
 {
     private $reporsitorioPais;
+    private $reporsitorioEstado;
 
     /**
      * IndexController constructor.
@@ -11,6 +13,7 @@ class IndexController
     public function __construct()
     {
         $this->reporsitorioPais = new PaisReporsitorio();
+        $this->reporsitorioEstado = new EstadoReporsitorio();
     }
 
     public function normal()
@@ -32,6 +35,25 @@ class IndexController
                     } else {
                         $lista = $this->reporsitorioPais->findAll()->fetchAll();
                         include "./viewer/inserirEstado.php";
+
+                    }
+//                    $this->includeWithVariables("./viewer/inserirPais.php", ['lista'=>$lista]);
+                    break;
+                case "cidade":
+                    if (isset($_GET['estado'])){
+                        $pais = $this->reporsitorioPais->findByName($_GET['pais']);
+                        $estado = $this->reporsitorioEstado->findByName($_GET['estado']);
+                        $idPais = $pais->id;
+                        $idEstado = $estado->id;
+                        include "./viewer/inserirCidade3.php";
+                    }else if (isset($_GET['pais'])) {
+                        $pais = $this->reporsitorioPais->findByName($_GET['pais']);
+                        $lista = $this->reporsitorioEstado->findAllByPais( $pais->id
+                            )->fetchAll();
+                        include "./viewer/inserirCidade2.php";
+                    } else {
+                        $lista = $this->reporsitorioPais->findAll()->fetchAll();
+                        include "./viewer/inserirCidade.php";
 
                     }
 //                    $this->includeWithVariables("./viewer/inserirPais.php", ['lista'=>$lista]);
