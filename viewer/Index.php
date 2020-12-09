@@ -53,6 +53,24 @@
             </main>
         </header>
 
+        <table style="width:100%; text-align: center">
+            <tr>
+               <th>Pais</th>
+               <th>Estado</th>
+               <th>Cidade</th>
+               <th>Descrição</th>
+            </tr>
+            <?php
+            foreach ($dados as $item){
+                echo "<tr>\n";
+                echo "<td>".$item['Pais']."</td>\n";
+                echo "<td>".$item['Estado']."</td>\n";
+                echo "<td>".$item['Cidade']."</td>\n";
+                echo "<td>".$item['Descricao']."</td>\n";
+                echo "</tr>\n";
+            }
+            ?>
+        </table>
 
     </body>
 
